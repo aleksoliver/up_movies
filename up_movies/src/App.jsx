@@ -1,4 +1,23 @@
+import { useState } from "react";
+
 function App() {
+
+  const [titulo, setTitulo] = useState()
+  const adicionar = event => {
+
+    event.preventDefault()
+
+    console.log('add',titulo);
+
+    const atualizaInput = event => {
+
+      console.log('atualizando', event.target.value);
+      setTitulo(event.target.titulo)
+    }
+
+
+  }
+
   return (
     <>
       <div className="container">
@@ -8,7 +27,7 @@ function App() {
             <label htmlFor="" className="form-label">
               Titulo
             </label>
-            <input type="text" className="form-control" />
+            <input id="titulo" type="text" className="form-control" value={titulo} onChange={atualizaInput} />
           </div>
           <div className="col-md-12">
             <label htmlFor="" className="form-label">
@@ -22,7 +41,7 @@ function App() {
             </label>
             <input type="text" className="form-control" />
           </div>
-          <button className="btn btn-primary">Adicionar</button>
+          <button className="btn btn-primary" onClick={adicionar}>Adicionar</button>
         </form>
       </div>
     </>
